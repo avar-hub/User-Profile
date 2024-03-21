@@ -19,12 +19,14 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"likedBy"})
+@JsonIgnoreProperties({"likedBy","email"})
 public class UserProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(unique = true)
+    private String email;
     @NotNull
     private String name;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
