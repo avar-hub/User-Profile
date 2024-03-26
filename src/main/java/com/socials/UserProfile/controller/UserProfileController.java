@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/profile")
 @RequiredArgsConstructor
@@ -29,5 +31,10 @@ public class UserProfileController {
     @DeleteMapping("/deleteByEmail")
     public ResponseEntity<String> deleteByEmail(@RequestParam String email){
         return ResponseEntity.ok().body(userProfileService.deleteUserProfileByEmail(email));
+    }
+
+    @GetMapping("/getPeopleNearByMe")
+    public ResponseEntity<List<UserProfile>> showPeople(@RequestParam String email){
+        return ResponseEntity.ok().body(userProfileService.showPeople(email));
     }
 }

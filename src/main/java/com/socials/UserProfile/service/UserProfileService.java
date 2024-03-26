@@ -1,6 +1,9 @@
 package com.socials.UserProfile.service;
 
 import com.socials.UserProfile.entity.UserProfile;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 public interface UserProfileService {
 
@@ -9,4 +12,6 @@ public interface UserProfileService {
     UserProfile getUserProfileByEmail(String email);
 
     String deleteUserProfileByEmail(String email);
+
+    List<UserProfile> showPeople(String email);
 }
