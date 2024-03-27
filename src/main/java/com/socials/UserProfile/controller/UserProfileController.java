@@ -1,5 +1,6 @@
 package com.socials.UserProfile.controller;
 
+import com.socials.UserProfile.entity.SwipeRecord;
 import com.socials.UserProfile.entity.UserProfile;
 import com.socials.UserProfile.service.UserProfileService;
 import com.socials.UserProfile.service.UserProfileServiceImpl;
@@ -37,4 +38,10 @@ public class UserProfileController {
     public ResponseEntity<List<UserProfile>> showPeople(@RequestParam String email){
         return ResponseEntity.ok().body(userProfileService.showPeople(email));
     }
+
+    @PostMapping("/swipeRight")
+    public ResponseEntity<String> saveRightSwipes(@RequestBody SwipeRecord swipeRecord){
+        return ResponseEntity.ok().body(userProfileService.saveRightSwipes(swipeRecord));
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.socials.UserProfile.service;
 
+import com.socials.UserProfile.entity.SwipeRecord;
 import com.socials.UserProfile.entity.UserProfile;
 import org.springframework.data.jpa.repository.Query;
 
@@ -14,4 +15,6 @@ public interface UserProfileService {
     String deleteUserProfileByEmail(String email);
 
     List<UserProfile> showPeople(String email);
+
+    String saveRightSwipes(SwipeRecord swipeRecord);
 }

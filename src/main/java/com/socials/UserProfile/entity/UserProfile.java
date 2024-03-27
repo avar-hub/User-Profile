@@ -19,7 +19,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"likedBy","email"})
+@JsonIgnoreProperties({"email"})
 public class UserProfile {
 
     @Id
@@ -40,5 +40,4 @@ public class UserProfile {
     private String city;
     @Size(min = 2)
     private List<String> interests;
-    private List<String> likedBy;
 }

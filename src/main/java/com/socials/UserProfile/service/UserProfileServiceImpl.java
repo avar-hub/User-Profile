@@ -1,14 +1,16 @@
 package com.socials.UserProfile.service;
 
+import com.socials.UserProfile.entity.SwipeRecord;
 import com.socials.UserProfile.entity.UserProfile;
 import com.socials.UserProfile.exception.UserNotFoundException;
 import com.socials.UserProfile.exception.UserNotSavedException;
+import com.socials.UserProfile.repository.SwipeRecordRepo;
 import com.socials.UserProfile.repository.UserProfileRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -16,6 +18,8 @@ import java.util.stream.Collectors;
 public class UserProfileServiceImpl implements UserProfileService {
 
     private final UserProfileRepo repo;
+
+    private final SwipeRecordRepo swipeRecordRepo;
 
     @Override
     public String saveUserProfile(UserProfile userProfile, String email) {
@@ -64,5 +68,17 @@ public class UserProfileServiceImpl implements UserProfileService {
                 })
                 .collect(Collectors.toList());
 
+    }
+
+    @Override
+    public String saveRightSwipes(SwipeRecord swipeRecord) {
+        Optional<SwipeRecord> swipeRecord1= swipeRecordRepo.findByUserEmailAndUserEmailLiked(swipeRecord.getUserEmailLiked(),swipeRecord.getUserEmail());
+        if(swipeRecord1.isPresent()){
+            swipeRecord.setMatchFound(true);
+            swipeRecord1.get().setMatchFound(true);
+            swipeRecordRepo.save(swipeRecord1.get());
+        }
+        swipeRecordRepo.save(swipeRecord);
+        return "Record saved";
     }
 }
