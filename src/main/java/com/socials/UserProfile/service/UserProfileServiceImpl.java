@@ -1,9 +1,11 @@
 package com.socials.UserProfile.service;
 
+import com.socials.UserProfile.entity.MatchRecord;
 import com.socials.UserProfile.entity.SwipeRecord;
 import com.socials.UserProfile.entity.UserProfile;
 import com.socials.UserProfile.exception.UserNotFoundException;
 import com.socials.UserProfile.exception.UserNotSavedException;
+import com.socials.UserProfile.repository.MatchRecordRepo;
 import com.socials.UserProfile.repository.SwipeRecordRepo;
 import com.socials.UserProfile.repository.UserProfileRepo;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,8 @@ public class UserProfileServiceImpl implements UserProfileService {
     private final UserProfileRepo repo;
 
     private final SwipeRecordRepo swipeRecordRepo;
+
+    private final MatchRecordRepo matchRecordRepo;
 
     @Override
     public String saveUserProfile(UserProfile userProfile, String email) {
@@ -74,11 +78,14 @@ public class UserProfileServiceImpl implements UserProfileService {
     public String saveRightSwipes(SwipeRecord swipeRecord) {
         Optional<SwipeRecord> swipeRecord1= swipeRecordRepo.findByUserEmailAndUserEmailLiked(swipeRecord.getUserEmailLiked(),swipeRecord.getUserEmail());
         if(swipeRecord1.isPresent()){
-            swipeRecord.setMatchFound(true);
-            swipeRecord1.get().setMatchFound(true);
-            swipeRecordRepo.save(swipeRecord1.get());
+            MatchRecord matchRecord= MatchRecord.builder()
+                    .user1(swipeRecord.getUserEmailLiked()).user2(swipeRecord.getUserEmail()).build();
+            matchRecordRepo.save(matchRecord);
+            swipeRecordRepo.deleteById(swipeRecord1.get().getId());
         }
-        swipeRecordRepo.save(swipeRecord);
+        else {
+            swipeRecordRepo.save(swipeRecord);
+        }
         return "Record saved";
     }
 }

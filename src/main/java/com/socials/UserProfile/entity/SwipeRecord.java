@@ -22,6 +22,5 @@ public class SwipeRecord {
     private Integer id;
     private String userEmail;
     private String userEmailLiked;
-    private boolean matchFound =false;
 
 }
