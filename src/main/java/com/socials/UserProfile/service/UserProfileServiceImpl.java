@@ -9,6 +9,7 @@ import com.socials.UserProfile.repository.MatchRecordRepo;
 import com.socials.UserProfile.repository.SwipeRecordRepo;
 import com.socials.UserProfile.repository.UserProfileRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -87,5 +88,15 @@ public class UserProfileServiceImpl implements UserProfileService {
             swipeRecordRepo.save(swipeRecord);
         }
         return "Record saved";
+    }
+
+    @Override
+    public UserProfile updateUserProfile(UserProfile userProfile, String email) {
+        UserProfile userProfile1 = repo.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+        userProfile.setId(userProfile1.getId());
+        userProfile.setEmail(userProfile1.getEmail());
+        return repo.save(userProfile);
+
     }
 }

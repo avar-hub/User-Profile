@@ -44,4 +44,8 @@ public class UserProfileController {
         return ResponseEntity.ok().body(userProfileService.saveRightSwipes(swipeRecord));
     }
 
+    @PutMapping("/updateUser")
+    public ResponseEntity<UserProfile> updateUserProfile(@RequestBody @Valid UserProfile userProfile , @RequestParam String email){
+        return ResponseEntity.ok().body(userProfileService.updateUserProfile(userProfile,email));
+    }
 }

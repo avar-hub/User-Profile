@@ -17,4 +17,6 @@ public interface UserProfileService {
     List<UserProfile> showPeople(String email);
 
     String saveRightSwipes(SwipeRecord swipeRecord);
+
+    UserProfile updateUserProfile(UserProfile userProfile, String email);
 }
