@@ -9,7 +9,7 @@ import com.socials.UserProfile.repository.MatchRecordRepo;
 import com.socials.UserProfile.repository.SwipeRecordRepo;
 import com.socials.UserProfile.repository.UserProfileRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,6 +51,7 @@ public class UserProfileServiceImpl implements UserProfileService {
         return "User deleted successfully";
     }
 
+    @Cacheable(cacheNames = "cache1", key = "'#key1'")
     @Override
     public List<UserProfile> showPeople(String email) {
         UserProfile user = repo.findByEmail(email).orElseThrow(() -> new UserNotFoundException("User not found"));
