@@ -8,6 +8,7 @@ import com.socials.UserProfile.exception.UserNotSavedException;
 import com.socials.UserProfile.repository.MatchRecordRepo;
 import com.socials.UserProfile.repository.SwipeRecordRepo;
 import com.socials.UserProfile.repository.UserProfileRepo;
+import com.socials.UserProfile.util.ImageServiceProxy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -26,9 +27,14 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     private final MatchRecordRepo matchRecordRepo;
 
+    private final ImageServiceProxy imageServiceProxy;
+
     @Override
     public String saveUserProfile(UserProfile userProfile, String email) {
         userProfile.setEmail(email);
+
+//        Have to solve this error !!
+//        userProfile.setImagePath(imageServiceProxy.getImagePath(email));
         UserProfile userProfile1 = repo.save(userProfile);
         if (userProfile1 != null)
             return "User Saved Successfully";

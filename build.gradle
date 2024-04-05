@@ -26,6 +26,7 @@ ext {
 }
 
 dependencies {
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis' // Spring Boot Starter for Redis
 	implementation 'io.lettuce:lettuce-core' // Lettuce Redis client
 	implementation 'org.springframework.boot:spring-boot-starter-validation'

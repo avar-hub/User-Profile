@@ -20,7 +20,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"email"})
+@JsonIgnoreProperties({"email","imagePath"})
 public class UserProfile implements Serializable {
 
     @Id
@@ -41,4 +41,5 @@ public class UserProfile implements Serializable {
     private String city;
     @Size(min = 2)
     private List<String> interests;
+    private String imagePath;
 }
