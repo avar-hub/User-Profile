@@ -3,8 +3,8 @@ spring:
     name: User-Profile
 
   datasource:
-#    url: jdbc:mysql://localhost:3306/user_profile
-    url: jdbc:mysql://mysql-db:3306/user_profile
+    url: jdbc:mysql://localhost:3306/user_profile
+#    url: jdbc:mysql://mysql-db3:3306/user_profile
     username: root
     password: admin
 
@@ -22,7 +22,7 @@ spring:
       time-to-live: 6000
 
   redis:
-    host: localhost
+    host: redis-service
     port: 6379
 
 
@@ -32,8 +32,8 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://naming-server-service:8761/eureka
-#      defaultZone: http://localhost:8765/eureka
+#      defaultZone: http://naming-server-service:8761/eureka
+      defaultZone: http://localhost:8761/eureka
 
 
 
