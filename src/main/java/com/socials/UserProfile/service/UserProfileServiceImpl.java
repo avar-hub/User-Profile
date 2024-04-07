@@ -66,16 +66,16 @@ public class UserProfileServiceImpl implements UserProfileService {
         return userProfiles.stream()
                 .filter(userProfile -> !userProfile.getEmail().equals(email))
                 .filter(userProfile -> {
-                    if (user.getSexualOrientation().equals("Bisexual")) {
-                        return true;
-                    }else if (user.getGender().equals("Male")) {
+                     if (user.getGender().equals("Male")) {
                         return userProfile.getGender().equals("Male") &&
                                 (user.getSexualOrientation().equals("Gay") && (userProfile.getSexualOrientation().equals("Gay") || userProfile.getSexualOrientation().equals("Bisexual"))) ||
-                                (user.getSexualOrientation().equals("Straight") && (userProfile.getGender().equals("Female") && (userProfile.getSexualOrientation().equals("Straight") || userProfile.getSexualOrientation().equals("Bisexual"))));
+                                (user.getSexualOrientation().equals("Straight") && (userProfile.getGender().equals("Female") && (userProfile.getSexualOrientation().equals("Straight") || userProfile.getSexualOrientation().equals("Bisexual"))) ||
+                                        (user.getSexualOrientation().equals("Bisexual") &&  (userProfile.getSexualOrientation().equals("Bisexual") || userProfile.getSexualOrientation().equals("Gay"))));
                     } else  {
                         return userProfile.getGender().equals("Female") &&
                                 (user.getSexualOrientation().equals("Lesbian") && (userProfile.getSexualOrientation().equals("Lesbian") || userProfile.getSexualOrientation().equals("Bisexual"))) ||
-                                (user.getSexualOrientation().equals("Straight") && (userProfile.getGender().equals("Male") && (userProfile.getSexualOrientation().equals("Straight") || userProfile.getSexualOrientation().equals("Bisexual"))));
+                                (user.getSexualOrientation().equals("Straight") && (userProfile.getGender().equals("Male") && (userProfile.getSexualOrientation().equals("Straight") || userProfile.getSexualOrientation().equals("Bisexual"))) ||
+                                        (user.getSexualOrientation().equals("Bisexual") &&  (userProfile.getSexualOrientation().equals("Bisexual") || userProfile.getSexualOrientation().equals("Lesbian"))));
                     }
                 })
                 .collect(Collectors.toList());
