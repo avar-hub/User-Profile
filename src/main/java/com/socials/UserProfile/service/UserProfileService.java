@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserProfileService {
 
-    public String saveUserProfile(UserProfile userProfile, String email);
+    public UserProfile saveUserProfile(UserProfile userProfile, String email);
 
     UserProfile getUserProfileByEmail(String email);
 

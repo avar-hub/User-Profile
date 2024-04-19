@@ -19,7 +19,7 @@ public class UserProfileController {
     private final UserProfileService userProfileService;
 
     @PostMapping("/saveUser")
-    public ResponseEntity<String> saveUser(@RequestBody @Valid UserProfile userProfile , @RequestParam String email) {
+    public ResponseEntity<UserProfile> saveUser(@RequestBody @Valid UserProfile userProfile , @RequestParam String email) {
         return ResponseEntity.ok()
                 .body(userProfileService.saveUserProfile(userProfile,email));
     }

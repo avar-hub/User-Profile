@@ -30,16 +30,12 @@ public class UserProfileServiceImpl implements UserProfileService {
     private final ImageServiceProxy imageServiceProxy;
 
     @Override
-    public String saveUserProfile(UserProfile userProfile, String email) {
+    public UserProfile saveUserProfile(UserProfile userProfile, String email) {
         userProfile.setEmail(email);
 
 //        Have to solve this error !!
 //        userProfile.setImagePath(imageServiceProxy.getImagePath(email));
-        UserProfile userProfile1 = repo.save(userProfile);
-        if (userProfile1 != null)
-            return "User Saved Successfully";
-        else
-            throw new UserNotSavedException("User Not Saved");
+        return  repo.save(userProfile);
     }
 
     @Override
