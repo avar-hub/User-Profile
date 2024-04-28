@@ -8,7 +8,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -30,7 +30,7 @@ public class UserProfile implements Serializable {
     private String name;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @NotNull
-    private Date dob;
+    private LocalDate dob;
     @NotNull
     private String gender;
     @NotNull

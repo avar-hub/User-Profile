@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,7 +40,7 @@ public class UserProfileService {
     @Test
     public void saveUserProfile_Test(){
         UserProfile userProfile= UserProfile.builder().name("abc").city("dehradun").
-        dob(new Date(2000,9,01))
+        dob(LocalDate.of(2000 - 1900, 9 - 1, 1))
                 .gender("Male").sexualOrientation("Straight")
                 .interests(List.of("Hiking","Reading","Cooking")).build();
 
@@ -54,7 +55,7 @@ public class UserProfileService {
     @Test
     public void getUserProfileByEmail_Test(){
         UserProfile userProfile= UserProfile.builder().name("abc").city("dehradun").
-                dob(new Date(2000,9,01))
+                dob(LocalDate.of(2000 - 1900, 9 - 1, 1))
                 .gender("Male").sexualOrientation("Straight")
                 .interests(List.of("Hiking","Reading","Cooking")).build();
 
@@ -69,7 +70,7 @@ public class UserProfileService {
     @Test
     public void deleteUserProfileByEmail_Test(){
         UserProfile userProfile= UserProfile.builder().name("abc").city("dehradun").
-                dob(new Date(2000,9,01))
+                dob(LocalDate.of(2000 - 1900, 9 - 1, 1))
                 .gender("Male").sexualOrientation("Straight")
                 .interests(List.of("Hiking","Reading","Cooking")).build();
 
@@ -84,7 +85,7 @@ public class UserProfileService {
     @Test
     public void updateUserProfile_Test(){
         UserProfile userProfile= UserProfile.builder().name("abc").city("dehradun").
-                dob(new Date(2000,9,01))
+                dob(LocalDate.of(2000 - 1900, 9 - 1, 1))
                 .gender("Male").sexualOrientation("Straight")
                 .interests(List.of("Hiking","Reading","Cooking")).build();
 
@@ -134,12 +135,12 @@ public class UserProfileService {
         String email= "avarmittal@gmail.com";
         String city= "dehradun";
         UserProfile userProfile = UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email(email).gender("Male")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email(email).gender("Male")
                 .sexualOrientation("Straight").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
 
         UserProfile userProfile1= UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email("abc@gmail.com").gender("Female")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email("abc@gmail.com").gender("Female")
                 .sexualOrientation("Straight").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
         List<UserProfile> userProfiles= List.of(userProfile1);
@@ -157,12 +158,12 @@ public class UserProfileService {
         String email= "avarmittal@gmail.com";
         String city= "dehradun";
         UserProfile userProfile = UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email(email).gender("Female")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email(email).gender("Female")
                 .sexualOrientation("Straight").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
 
         UserProfile userProfile1= UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email("abc@gmail.com").gender("Male")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email("abc@gmail.com").gender("Male")
                 .sexualOrientation("Straight").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
         List<UserProfile> userProfiles= List.of(userProfile1);
@@ -179,16 +180,16 @@ public class UserProfileService {
         String email= "avarmittal@gmail.com";
         String city= "dehradun";
         UserProfile userProfile = UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email(email).gender("Male")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email(email).gender("Male")
                 .sexualOrientation("Gay").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
 
         UserProfile userProfile1= UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email("abc@gmail.com").gender("Male")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email("abc@gmail.com").gender("Male")
                 .sexualOrientation("Gay").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
         UserProfile userProfile2= UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email("abcdd@gmail.com").gender("Male")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email("abcdd@gmail.com").gender("Male")
                 .sexualOrientation("Bisexual").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
         List<UserProfile> userProfiles= List.of(userProfile1,userProfile2);
@@ -205,20 +206,20 @@ public class UserProfileService {
         String email= "avarmittal@gmail.com";
         String city= "dehradun";
         UserProfile userProfile = UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email(email).gender("Male")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email(email).gender("Male")
                 .sexualOrientation("Bisexual").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
 
         UserProfile userProfile1= UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email("abc@gmail.com").gender("Male")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email("abc@gmail.com").gender("Male")
                 .sexualOrientation("Bisexual").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
         UserProfile userProfile2= UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email("abcdd@gmail.com").gender("Male")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email("abcdd@gmail.com").gender("Male")
                 .sexualOrientation("Gay").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
         UserProfile userProfile3= UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email("abcddee@gmail.com").gender("Female")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email("abcddee@gmail.com").gender("Female")
                 .sexualOrientation("Bisexual").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
         List<UserProfile> userProfiles= List.of(userProfile1,userProfile2,userProfile3);
@@ -235,16 +236,16 @@ public class UserProfileService {
         String email= "avarmittal@gmail.com";
         String city= "dehradun";
         UserProfile userProfile = UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email(email).gender("Female")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email(email).gender("Female")
                 .sexualOrientation("Lesbian").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
 
         UserProfile userProfile1= UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email("abc@gmail.com").gender("Female")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email("abc@gmail.com").gender("Female")
                 .sexualOrientation("Bisexual").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
         UserProfile userProfile2= UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email("abcdd@gmail.com").gender("Female")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email("abcdd@gmail.com").gender("Female")
                 .sexualOrientation("Lesbian").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
         List<UserProfile> userProfiles= List.of(userProfile1,userProfile2);
@@ -261,20 +262,20 @@ public class UserProfileService {
         String email= "avarmittal@gmail.com";
         String city= "dehradun";
         UserProfile userProfile = UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email(email).gender("Female")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email(email).gender("Female")
                 .sexualOrientation("Bisexual").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
 
         UserProfile userProfile1= UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email("abc@gmail.com").gender("Female")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email("abc@gmail.com").gender("Female")
                 .sexualOrientation("Lesbian").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
         UserProfile userProfile2= UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email("abcdd@gmail.com").gender("Female")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email("abcdd@gmail.com").gender("Female")
                 .sexualOrientation("Bisexual").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
         UserProfile userProfile3= UserProfile.builder().name("abc").city(city)
-                .dob(new Date(2000, 9, 1)).email("abcddee@gmail.com").gender("Male")
+                .dob(LocalDate.of(2000 - 1900, 9 - 1, 1)).email("abcddee@gmail.com").gender("Male")
                 .sexualOrientation("Bisexual").interests(List.of("Hiking", "Reading", "Cooking"))
                 .build();
         List<UserProfile> userProfiles= List.of(userProfile1,userProfile2,userProfile3);

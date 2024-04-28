@@ -1,17 +1,11 @@
 package com.socials.UserProfile.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.socials.UserProfile.entity.SwipeRecord;
 import com.socials.UserProfile.entity.UserProfile;
 import com.socials.UserProfile.service.UserProfileServiceImpl;
-import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
-import org.mockito.BDDMockito;
-import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -23,8 +17,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @WebMvcTest(controllers = UserProfileController.class)
@@ -46,7 +39,7 @@ public class UserProfileControllerTest {
     public void saveUser_Test() throws Exception {
 
         UserProfile userProfile= UserProfile.builder().name("abc").city("dehradun").
-                dob(new Date(2000,9,01))
+                dob(LocalDate.of(2000 - 1900, 9 - 1, 1))
                 .gender("Male").sexualOrientation("Straight")
                 .interests(List.of("Hiking","Reading","Cooking")).build();
 
@@ -97,7 +90,7 @@ public class UserProfileControllerTest {
     public void updateUserProfile_Test() throws Exception {
 
         UserProfile userProfile= UserProfile.builder().name("abc").city("dehradun").
-                dob(new Date(2000,9,01))
+                dob(LocalDate.of(2000 - 1900, 9 - 1, 1))
                 .gender("Male").sexualOrientation("Straight")
                 .interests(List.of("Hiking","Reading","Cooking")).build();
 
