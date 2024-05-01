@@ -29,10 +29,25 @@ spring:
 server:
   port: 8082
 
+#eureka:
+#  client:
+#    serviceUrl:
+##      defaultZone: http://naming-server-service:8761/eureka
+#      defaultZone: http://localhost:8761/eureka
+#  instance:
+#    hostname: localhost
+
+#Kubernetes
+
 eureka:
-  client:
-    serviceUrl:
-#      defaultZone: http://naming-server-service:8761/eureka
-      defaultZone: http://localhost:8761/eureka
   instance:
-    hostname: localhost
+    preferIpAddress: true
+    hostname: eureka-0
+
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      #      podname-{replica-indes}.{service-name}.default.svc.cluster.local
+
+      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
